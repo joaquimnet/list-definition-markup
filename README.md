@@ -18,6 +18,49 @@ yarn install list-definition-markup
 ldm <path> [--output="file name or path"] [--verbose] [--dry]
 ```
 
+or
+
+```javascript
+const parse = require('list-definition-markup');
+
+// parse() returns the ldm content parsed as a javascript object
+const parsedObject = parse(someLdmText);
+```
+
+## Example
+
+```sh
+ldm my-house.ldm
+```
+
+-> my-house.ldm
+
+```ldm
+house
+  living room
+  kitchen
+  bathroom
+  room
+    tv
+    bed
+```
+
+-> my-house.json
+
+```json
+{
+  "house": {
+    "living room": "living room",
+    "kitchen": "kitchen",
+    "bathroom": "bathroom",
+    "room": {
+      "tv": "tv",
+      "bed": "bed"
+    }
+  }
+}
+```
+
 ## Run tests
 
 ```sh
