@@ -1,0 +1,211 @@
+📱 Webworks
+  HTTP
+    HTTPS
+    Request Headers
+    Status Codes
+  Web Requests
+    REST
+    GraphQL
+    Serverless
+
+🎨 Styles
+  Basic HTML & CSS
+    Semantic HTML5 Tags
+    Layouting a Page
+  Responsive Layout
+    Mobile First
+    Grid
+    Flexbox
+  CSS Transitions and Animations
+    Simple Animations
+    Complex Animations
+  CSS Architectures
+    BEM
+    OOCSS
+    SMACS
+  Sass Pre-Processor
+    Basic Concepts
+    Advanced Concepts
+  HTML / CSS Framework
+    Bootstrap
+    Tailwind
+    Materialize CSS
+    Semantic UI
+    Foundation
+    Bulma
+    Skeleton
+    Pure
+
+💻 Frontending
+  Javascript
+    Basic Syntax And Concepts
+    DOM
+    Browser APIs
+    ES6
+    ES2016
+    ES2017
+    ES2018
+    ES2019
+  Frontend Framework
+    React
+    Vue
+    JQuery
+    SolidJS
+    Preact
+    Svelte
+    Angular (lmao no) (or... perhaps in the future..........?)
+  State Management
+    Redux
+    Vuex
+    MobX
+    NgRx
+  PWA
+    Offline work mode
+    Push notifications
+    Background synchronization
+  Accessibility
+    WCAG
+  Static Site Generators
+    Gatsby
+    Gridsome
+    Jekyll
+    Hexo
+
+🖥 Backending
+  Server Side Language
+    Node Basics
+    Node Standard Library
+    Node Advanced Concepts (Event Loop, Asynchrony, Concurrency)
+  Server Framework
+    Express
+    Next
+    Nuxt
+    Nest
+    Koa
+    Adonis
+  Database
+    MongoDB
+    MySQL
+    Postgresql
+    Firebase
+    RethinkDB
+  ORM
+    Mongoose
+
+🔧 Tooling
+  WebDev Tooling
+    Git Commands
+    NPM
+    Yarn
+    ESLint
+    Prettier
+    Webpack
+    Parcel
+    Gulp
+    Grunt
+    Rollup
+  Typescript
+    Types
+    Interfaces
+    Utility Types
+    Classes
+    Generics
+    Namespaces and Modules
+    Decorators
+    TS Configuration
+
+📦 Deployment
+  Basic Deployment
+    Traditional Shared Hosting
+    Github Pages
+    Netlifly
+  FaaS PaaS Deployment
+    Heroku
+    Digital Ocean
+    AWS
+    Google Cloud
+    Azure
+
+👓 Beyond The Browser
+  Mobile Development
+    React Native
+    Ionic
+    Flutter
+  Desktop Apps
+    Electron
+    NodeGUI
+    NW
+    Deskgap
+
+🧱 DevOping
+  Containers
+    Docker
+    Kubernetes
+  CI/CD
+    Github Actions
+    Jenkins
+    Travis
+  Cloud Providers
+    AWS
+    Google
+    Azure
+    Heroku
+
+🟡 Testing
+  Testing Tooling
+    Jest
+    Mocha
+    Chai
+    Puppeteer
+    Cypress
+    Enzyme
+    Storybook
+  Testing Types
+    Unit Tests
+    Integration Tests
+    E2E
+
+🧩 Meta Programming
+  Creational design patterns
+    Abstract Factory
+    Builder
+    Factory Method
+    Object Pool
+    Prototype
+    Singleton
+  Structural design patterns
+    Adapter
+    Bridge
+    Composite
+    Decorator
+    Facade
+    Flyweight
+    Private Class Data
+    Proxy
+  Behavioral design patterns
+    Chain of responsibility
+    Command
+    Interpreter
+    Iterator
+    Mediator
+    Memento
+    Null Object
+    Observer
+    State
+    Strategy
+    Template method
+    Visitor
+  Programming Paradigms
+    Object Oriented
+    Functional
+    Procedural
+
+🧶 Beyond The Trinity
+  CMS
+    Wordpress
+  Other Languages
+    PHP
+    Python
+    C++
+  Other... Stuff?
+    AssemblyScript

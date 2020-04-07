@@ -1,0 +1,28 @@
+{
+  "name": "list-definition-markup",
+  "version": "0.1.0",
+  "description": "Simple list format parser and converter.",
+  "main": "src/index.js",
+  "author": "Joaquim Neto",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint ./src/**/*.* --fix",
+    "test": "jest",
+    "format": "prettier ./src/**.* --write",
+    "cli": "ldm"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "eslint": "^6.8.0",
+    "jest": "^25.2.7",
+    "prettier": "^2.0.4"
+  },
+  "bin": {
+    "ldm": "./src/cli.js"
+  }
+}
