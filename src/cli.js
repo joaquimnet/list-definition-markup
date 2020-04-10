@@ -12,30 +12,6 @@ const read = promisify(fs.readFile);
 const write = promisify(fs.writeFile);
 
 const usage = bold('$0 <path> [--option]');
-const error = red(bold('Error! '));
-
-const pathWithoutExtension = filePath => {
-  const pathParts = filePath.split(/(\\|\/)/g);
-  const fileName = pathParts[pathParts.length - 1];
-
-  if (!fileName.includes('.') || fileName[0] === '.') {
-    return filePath;
-  }
-
-  const fileNameParts = fileName.split('.');
-
-  pathParts.pop();
-  fileNameParts.pop();
-
-  return pathParts.join('') + fileNameParts.join('.');
-};
-
-const pathExistsAndIsDir = filePath => {
-  return (
-    fs.existsSync(path.resolve(filePath)) &&
-    fs.statSync(path.resolve(filePath)).isDirectory()
-  );
-};
 
 const args = yargs
   .option('output', {
@@ -55,13 +31,17 @@ const args = yargs
   })
   .usage(usage).argv;
 
-if (args.verbose) {
-  console.log(args);
-}
+const log = {
+  red: text => console.log(red(bold(text))),
+  error: (text, extra) => console.log(red(bold('Error! ' + text)), extra || ''),
+  green: text => console.log(greenBright(bold(text))),
+  verbose: text => args.verbose && console.log(text),
+};
+
+log.verbose(args);
 
 if (!args._[0]) {
-  console.log(
-    error,
+  log.error(
     "You're missing the path argument:\n",
     usage.replace('$0', args['$0']),
   );
@@ -71,12 +51,12 @@ if (!args._[0]) {
 const inputFilePath = path.resolve(args._[0]);
 
 if (!fs.existsSync(inputFilePath)) {
-  console.log(error, `File at ${args._[0]} not found.`);
+  log.error(`File at ${args._[0]} not found.`);
   return;
 }
 
 if (fs.statSync(inputFilePath).isDirectory()) {
-  console.log(error, `${args._[0]} is a directory not a file.`);
+  log.error(`${args._[0]} is a directory not a file.`);
   return;
 }
 
@@ -85,11 +65,7 @@ read(path.resolve(args._[0]), { encoding: 'utf8' }).then(file => {
   try {
     parsedContent = parse(file);
   } catch (err) {
-    console.log(
-      red(bold('Failed to parse contents of file!')),
-      '\n',
-      err.message,
-    );
+    log.error('Failed to parse contents of file!', err.message);
     return;
   }
 
@@ -98,7 +74,7 @@ read(path.resolve(args._[0]), { encoding: 'utf8' }).then(file => {
   let output;
 
   if (args.output) {
-    if (pathExistsAndIsDir(args.output)) {
+    if (isDirectory(args.output)) {
       const fileName = path
         .resolve(args._[0])
         .split(/(\\|\/)/g)
@@ -113,25 +89,54 @@ read(path.resolve(args._[0]), { encoding: 'utf8' }).then(file => {
     output = pathWithoutExtension(output) + '.json';
   }
 
-  if (args.verbose) {
-    if (args.dry) {
-      console.log('Will write to (remove --dry to write):', output);
-    } else {
-      console.log('Writing to:', output);
-    }
+  if (args.dry) {
+    log.verbose('Will write to (remove --dry to write): ' + output);
+  } else {
+    log.verbose('Writing to: ' + output);
   }
 
-  if (fs.existsSync(output)) {
-    fs.unlinkSync(output);
-  }
+  deleteExistingFile(output);
 
   if (!args.dry) {
     write(path.resolve(output), parsedContent, { encoding: 'utf8' }).then(
       () => {
-        console.log(greenBright(bold('Done!')));
+        log.green('Done!');
       },
     );
   } else {
-    console.log(greenBright(bold('Done!')));
+    log.green('Done!');
   }
 });
+
+function pathWithoutExtension(filePath) {
+  const pathParts = filePath.split(/(\\|\/)/g);
+  const fileName = pathParts[pathParts.length - 1];
+
+  if (!fileName.includes('.') || fileName[0] === '.') {
+    return filePath;
+  }
+
+  const fileNameParts = fileName.split('.');
+
+  pathParts.pop();
+  fileNameParts.pop();
+
+  return pathParts.join('') + fileNameParts.join('.');
+}
+
+function isDirectory(filePath) {
+  return (
+    fs.existsSync(path.resolve(filePath)) &&
+    fs.statSync(path.resolve(filePath)).isDirectory()
+  );
+}
+
+function deleteExistingFile(output) {
+  try {
+    if (fs.existsSync(output)) {
+      fs.unlinkSync(output);
+    }
+  } catch {
+    /* continue code execution */
+  }
+}
