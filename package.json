@@ -1,6 +1,6 @@
 {
   "name": "list-definition-markup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple list format parser and converter.",
   "main": "src/index.js",
   "author": "Joaquim Neto",
